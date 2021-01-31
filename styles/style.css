@@ -147,7 +147,7 @@ html {
 
 .game-over-text {
   color: var(--clr-primary);
-  font-size: 5rem;
+  font-size: calc(var(--board-gap) * 7);
   font-weight: 700;
 }
 
@@ -156,13 +156,13 @@ html {
 }
 
 .game-over .btn {
-  min-width: calc((var(--cell-size) * 2) + var(--board-gap));
-  min-height: calc(var(--cell-size) / 2);
-  font-size: 3rem;
+  min-width: calc((var(--cell-size) * 3) + (var(--board-gap) * 2));
+  min-height: var(--cell-size);
+  font-size: calc(var(--board-gap) * 4);
   font-weight: 400;
   border: none;
-  padding: 0.5em 1.5em;
-  margin-top: 32px;
+  padding: 0.5em 1em;
+  margin-top: calc(var(--cell-size) / 3);
   border-radius: none;
   color: var(--clr-secondary);
   background: var(--clr-primary);
