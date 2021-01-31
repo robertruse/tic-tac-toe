@@ -1,0 +1,226 @@
+:root {
+  --cell-size: 160px;
+  --board-gap: calc(var(--cell-size) * 0.1);
+  --mark-size: calc(var(--cell-size) * 0.7);
+
+  --clr-primary: #000;
+  --clr-secondary: #fff;
+  /* --clr-accent: #db4f26; */
+  --clr-accent: #c4c4c4;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 64px;
+}
+
+/* Logo */
+.container-logo {
+  height: calc((var(--cell-size) * 3) + (var(--board-gap) * 2));
+  margin-right: auto;
+}
+
+#logo-sm {
+  display: none;
+}
+
+/* Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-items: center;
+  align-items: center;
+  gap: var(--board-gap);
+}
+
+.cell {
+  height: var(--cell-size);
+  width: var(--cell-size);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--clr-primary);
+  cursor: pointer;
+}
+
+/* Mark */
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after {
+  background: var(--clr-secondary);
+}
+
+.cell.circle::before {
+  background: var(--clr-secondary);
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  background: var(--clr-accent);
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  content: "";
+  height: var(--mark-size);
+  width: calc(var(--mark-size) * 0.2);
+  position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(circle):hover::before,
+.board.circle .cell:not(.x):not(circle):hover::after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.x):not(circle):hover::before {
+  height: var(--mark-size);
+  width: var(--mark-size);
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.x):not(circle):hover::after {
+  height: calc(var(--mark-size) * 0.6);
+  width: calc(var(--mark-size) * 0.6);
+  background: var(--clr-primary);
+}
+
+/* Game over */
+.game-over {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 1);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over-text {
+  color: var(--clr-primary);
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.game-over.show {
+  display: flex;
+}
+
+.game-over .btn {
+  min-width: calc((var(--cell-size) * 2) + var(--board-gap));
+  min-height: calc(var(--cell-size) / 2);
+  font-size: 3rem;
+  font-weight: 400;
+  border: none;
+  padding: 0.5em 1.5em;
+  margin-top: 32px;
+  border-radius: none;
+  color: var(--clr-secondary);
+  background: var(--clr-primary);
+  cursor: pointer;
+}
+
+.game-over .btn:hover {
+  color: var(--clr-primary);
+  background: var(--clr-accent);
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+  :root {
+    --cell-size: 144px;
+  }
+}
+
+@media (max-width: 950px) {
+  :root {
+    --cell-size: 128px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 32px;
+  }
+
+  .container-logo {
+    height: auto;
+    width: calc((var(--cell-size) * 3) + (var(--board-gap) * 2));
+    margin-right: 0;
+    padding-bottom: var(--cell-size);
+  }
+
+  #logo-lg {
+    display: none;
+  }
+
+  #logo-sm {
+    display: block;
+  }
+}
+
+@media (max-width: 540px) {
+  :root {
+    --cell-size: 96px;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --cell-size: 80px;
+  }
+}
+
+@media (max-width: 315px) {
+  :root {
+    --cell-size: 64px;
+  }
+}
