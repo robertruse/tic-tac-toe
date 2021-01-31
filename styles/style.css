@@ -162,14 +162,16 @@ html {
   font-weight: 400;
   border: none;
   padding: 0.5em 1em;
-  margin-top: calc(var(--cell-size) / 3);
+  margin-top: calc(var(--cell-size) / 4);
   border-radius: none;
   color: var(--clr-secondary);
   background: var(--clr-primary);
   cursor: pointer;
+  outline: none;
 }
 
-.game-over .btn:hover {
+.game-over .btn:hover,
+.game-over .btn:focus {
   color: var(--clr-primary);
   background: var(--clr-accent);
 }
