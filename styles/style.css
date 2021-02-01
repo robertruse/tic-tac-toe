@@ -229,6 +229,11 @@ html {
     padding: 24px;
   }
 
+  .game-over {
+    -webkit-transition: -webkit-transform 400ms ease-out;
+    transition: transform 400ms ease-out;
+  }
+
   .game-over-text {
     font-size: calc(var(--board-gap) * 7.2);
   }
