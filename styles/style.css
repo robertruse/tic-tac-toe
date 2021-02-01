@@ -179,7 +179,7 @@ html {
 /* Media queries */
 @media (max-width: 1024px) {
   :root {
-    --cell-size: 128px;
+    --cell-size: 132px;
   }
 }
 
@@ -211,7 +211,7 @@ html {
 
 @media (max-width: 540px) {
   :root {
-    --cell-size: 88px;
+    --cell-size: 92px;
   }
 
   .container {
@@ -233,12 +233,12 @@ html {
 
 @media (max-width: 376px) {
   :root {
-    --cell-size: 80px;
+    --cell-size: 84px;
   }
 }
 
 @media (max-width: 320px) {
   :root {
-    --cell-size: 68px;
+    --cell-size: 72px;
   }
 }
